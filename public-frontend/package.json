@@ -5,12 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next build && next export",
+    "exportToHosting": "next export && next export -o ../firebase-backend/hosting",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "dotenv": "^16.0.1",
     "next": "12.1.4",
-    "react": "18.0.0",
+    "react": "^18.0.0",
     "react-dom": "18.0.0"
   },
   "devDependencies": {
