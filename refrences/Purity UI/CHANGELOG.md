@@ -43,9 +43,9 @@ stylis-plugin-rtl                    2.1.0          →         2.1.1
 
 ### Added components
 
-- Each page now has a folder of its own, containing `index.js` (for the page itself) and a folder in which all cards have been made as a separate component which take props.
+- Each page now has a folder of its own, containing `authenticationService.js` (for the page itself) and a folder in which all cards have been made as a separate component which take props.
 - Added sidebar content which is used for both the standard sidebar and the responsive sidebar drawer.
-- Inside `Sidebar` folder in `components`, there is `index.js`, which is the actual sidebar, and `SidebarResponsive.js` which is a button that opens the sidebar drawer.
+- Inside `Sidebar` folder in `components`, there is `authenticationService.js`, which is the actual sidebar, and `SidebarResponsive.js` which is a button that opens the sidebar drawer.
 
 ### Updated dependencies
 

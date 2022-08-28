@@ -202,7 +202,7 @@ purity-ui-dashboard/
     │       └── SignUp.js
     │   └── RTL
     │       └── RTLPage.js
-    ├── index.js
+    ├── authenticationService.js
     └── routes.js
 
 ```

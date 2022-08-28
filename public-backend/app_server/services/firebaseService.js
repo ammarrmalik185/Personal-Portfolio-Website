@@ -1,15 +1,15 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+const admin = require("firebase-admin");
 
-import firebaseConfig from "../private/firebaseConfig.json";
+const serviceAccount = require("../private/firebaseAdmin.json");
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const firestore = getFirestore(app);
-const auth = getAuth(app);
-const storage = getStorage(app);
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://ammarportfolioweb-default-rtdb.asia-southeast1.firebasedatabase.app"
+});
 
-module.exports = { app, analytics, firestore, auth, storage };
+const auth = admin.auth();
+const firestore = admin.firestore();
+const database = admin.database();
+const storage = admin.storage();
+
+module.exports = { app: admin, firestore, auth, storage, database };

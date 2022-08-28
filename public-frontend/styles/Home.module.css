@@ -114,3 +114,37 @@
     flex-direction: column;
   }
 }
+
+.dialogActualContent{
+  border: 1px solid #888888;
+  padding: 20px;
+  margin-bottom: 20px;
+
+}
+
+.editorPage{
+  /*background: rgb(9,73,121);*/
+  /*background: linear-gradient(180deg, rgba(9,73,121,1) 1%, rgba(255,255,255,0) 100%);*/
+}
+
+.dialogContent{
+  margin: 20% auto;
+  text-align: center;
+  background-color: #ffffff;
+  height: fit-content;
+  min-height: 400px;
+  width: 80%;
+}
+
+.dialog{
+  background-color: rgba(255, 255, 255, 0.42);
+  display: none;
+  justify-items: center;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}

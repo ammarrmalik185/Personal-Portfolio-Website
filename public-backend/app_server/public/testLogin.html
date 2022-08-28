@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+<script>
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAzZdvRGqujXe17ZKCQDx9146WvZ5et8O0",
+        authDomain: "ammarportfolioweb.firebaseapp.com",
+        databaseURL: "https://ammarportfolioweb-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "ammarportfolioweb",
+        storageBucket: "ammarportfolioweb.appspot.com",
+        messagingSenderId: "947894610775",
+        appId: "1:947894610775:web:68a687b89b285bafceec12",
+        measurementId: "G-3WZYEMFQWQ"
+    };
+
+    const app = firebase.initializeApp(firebaseConfig);
+    firebase.auth().signInWithEmailAndPassword("test@test.com", "testtest").then( async (userData) => {
+        const idToken = await userData.user.getIdToken();
+        navigator.clipboard.writeText(idToken).then(() => {
+            console.log(idToken)
+            console.log("Copied to clipboard")
+        }).catch(err => {
+            console.log(err)
+        } )
+    })
+</script>
+
+</body>
+</html>
