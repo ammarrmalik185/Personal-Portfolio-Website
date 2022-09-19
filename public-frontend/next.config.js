@@ -6,7 +6,15 @@ const nextConfig = {
   images: {
     loader: 'akamai',
     path: '/images'
-  }
+  },
+  async rewrites() {
+    return [
+      {
+        source: 'https://ammarrmalik185.github.io/',
+        destination: 'https://ammarrmalik185.github.io/Personal-Portfolio-Website/',
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
