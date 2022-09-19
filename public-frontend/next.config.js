@@ -7,14 +7,7 @@ const nextConfig = {
     loader: 'akamai',
     path: '/images'
   },
-  async rewrites() {
-    return [
-      {
-        source: '/ammarrmalik185.github.io/',
-        destination: '/ammarrmalik185.github.io/Personal-Portfolio-Website/',
-      },
-    ]
-  },
+   basePath: '/Personal-Portfolio-Website',
 }
 
 module.exports = nextConfig
