@@ -10,8 +10,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: 'https://ammarrmalik185.github.io/',
-        destination: 'https://ammarrmalik185.github.io/Personal-Portfolio-Website/',
+        source: '/ammarrmalik185.github.io/',
+        destination: '/ammarrmalik185.github.io/Personal-Portfolio-Website/',
       },
     ]
   },
