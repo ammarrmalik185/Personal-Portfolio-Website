@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
-    axios.get("/blog").then(data => {
+    axios.get("/portfolio").then(data => {
       let array = data.data.data
       console.log(array)
       array.reverse();

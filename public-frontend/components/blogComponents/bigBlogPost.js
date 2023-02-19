@@ -1,18 +1,16 @@
-    import Image from "next/image";
-import image from "../public/sunset.jpg";
-
+import Image from "next/image";
 
 function LatestBlogPost(){
     return(
         <div className="rounded overflow-hidden shadow-lg border px-8 py-6">
             <div className="">
-                <Image className="rounded-md" src={image} alt="Sunset in the mountains" width={579} height={330} />
+                <Image className="rounded-md" src="sunset.jpg" alt="Sunset in the mountains" width={579} height={330} />
             </div>
 
            {/* adding foto, name and date */}
         <div className="mt-4 w-[579px] ">
             <div className="flex space-x-2">
-                 <Image className="rounded-sm" src={image} alt="Sunset in the mountains" width={30} height={30} />
+                 <Image className="rounded-sm" src="sunset.jpg" alt="Sunset in the mountains" width={30} height={30} />
                  <p className="font-jobhub font-normal text-[16px] text-[#111112]">Sarah Harding</p>
                  <p className="font-jobhub font-normal text-[16px] text-[#111112]">06 September</p>
 

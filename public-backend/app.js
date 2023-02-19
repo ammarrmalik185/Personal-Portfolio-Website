@@ -4,6 +4,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+
+
 
 const indexRouter = require('./app_server/routes/index');
 const errorHandler = require('./app_server/errorHandler/index');
@@ -16,8 +19,10 @@ app.set('view engine', 'jade');
 
 // middleware
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.urlencoded({ extended: false, limit: '5mb'}));
+// app.use(express.json({limit: '5mb'}));
+// app.use(express.urlencoded({ extended: false, limit: '5mb' }));
 app.use(cookieParser());
 app.use(cors());
 

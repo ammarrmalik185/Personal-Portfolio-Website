@@ -10,6 +10,15 @@ function createBlog(req, res, next) {
     .catch(next);
 }
 
+function updateBlog(req, res, next){
+    firebase.firestore.collection(blogCollectionName).doc(req.params.id).set(req.body)
+        .then(blog => res.status(201).json({
+            status: 'success',
+            data: blog,
+        }))
+        .catch(next);
+}
+
 function getAllBlogs(req, res, next) {
     firebase.firestore.collection(blogCollectionName).get()
         .then(querySnapshot => {
@@ -44,6 +53,7 @@ function getBlog(req, res, next) {
 
 module.exports = {
     createBlog,
+    updateBlog,
     getAllBlogs,
     getBlog,
 };
