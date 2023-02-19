@@ -1,32 +1,33 @@
 import Image from "next/image";
 import {RiFlag2Line} from "react-icons/ri";
 import {useRouter} from "next/router";
+import {CurrentTheme} from "../../styles/colorSchemes";
 
 
 function BlogCard ({ title, description, image, id, onClick }) {
     const Router = useRouter();
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg border cursor-pointer">
-            <div className="rounded-lg px-6 py-4" >
+        <div className="max-w-sm rounded shadow-lg" style={{backgroundColor: CurrentTheme.contrast}}>
+            <div className="rounded-lg px-6 pt-4" >
                 <Image className="rounded-lg" src={image} alt="Sunset in the mountains"  height="150" width="300"/></div>
-            <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2 h-[60px]">
+            <div className="px-6 pt-2">
+                <div className="font-bold text-xl">
                     <text className="line-clamp-2">
                         {title}
                     </text>
                 </div>
-                <p className="text-gray-700 text-base">
+                <p style={{color:CurrentTheme.text}}>
                     {description}
                 </p>
             </div>
 
             <div className="px-6 pt-4 pb-2 flex space-between">
             <div className="rounded-md flex-grow">
-            <div className="border-2 w-fit" onClick={() => Router.push({
+            <div className="w-fit rounded cursor-pointer mb-3" style={{backgroundColor: CurrentTheme.secondary}} onClick={() => Router.push({
                     pathname: "/blogs/post",
                     query:{id: id}
                 })}>
-                <span className="inline-block px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"> Keep Reading </span>
+                <span className="inline-block text-sm font-semibold text-gray-700 p-2" style={{color: CurrentTheme.text}}> Keep Reading </span>
             </div>
 
             </div>
