@@ -6,7 +6,7 @@ export default function Header() {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
-                <Navbar.Brand href="#home">Ammar's Portfolio</Navbar.Brand>
+                <Navbar.Brand href="#home">Ammar&apos;s Portfolio</Navbar.Brand>
 
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
