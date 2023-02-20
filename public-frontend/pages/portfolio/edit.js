@@ -10,7 +10,7 @@ export default function Editor(){
      return(
         <div className={styles.editorPage} >
             <h1 className={styles.title}>Create Your Blog</h1>
-            <ContentEditor onSave={(uploadData) => {
+            <ContentEditor prompts={{title: "Portfolio Title", saveButton:"Save"}} onSave={(uploadData) => {
                     axios.post('/portfolio', uploadData).then(() => {
                         router.push("/portfolio").then(console.log).catch(console.error)
                     })
