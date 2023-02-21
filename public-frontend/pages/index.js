@@ -1,8 +1,8 @@
 import styles from '../styles/Home.module.css'
-import {useEffect, useState} from "react";
-import axios from "../services/axiosService";
+import { useEffect, useState } from "react";
+import { firestore } from "../services/firebaseService";
 import CustomHtmlViewer from "../components/customHtmlTemplate/customHtmlViewer";
-import {Collapse} from "react-bootstrap";
+import { Collapse } from "react-bootstrap";
 import { CurrentTheme } from "../styles/colorSchemes";
 
 export default function Blogpost() {
@@ -11,11 +11,17 @@ export default function Blogpost() {
     const [isInit, setIsInit] = useState(false);
     useEffect(() => {
         if(!isInit){
-            axios.get("/portfolio/ammarRashidMalik").then(rawData => {
-                let data = rawData.data.data;
-                setTitle(data.title);
-                setContent(data.content);
-            }).catch(console.error)
+            firestore.collection("portfolios").doc("ammarRashidMalik").get().then(snapshot => {
+                if (snapshot.exists) {
+                    let data = snapshot.data();
+                    setTitle(data.title);
+                    setContent(data.content);
+                    console.log("Document data:", data);
+
+                } else {
+                    console.log("No such document!");
+                }
+            })
             setIsInit(true);
         }
 

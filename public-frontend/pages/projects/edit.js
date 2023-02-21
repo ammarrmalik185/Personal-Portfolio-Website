@@ -1,6 +1,6 @@
 import styles from '../../styles/Home.module.css'
 import { useRouter } from "next/router";
-import axios from "../../services/axiosService";
+import { firestore } from "../../services/firebaseService";
 import ContentEditor from "../../components/contentTemplate/contentEditor";
 
 export default function Editor(){
@@ -8,13 +8,10 @@ export default function Editor(){
      return(
         <div className={styles.editorPage} >
             <h1 className={styles.title}>Publish your Project</h1>
-            <ContentEditor
-                prompts={{title:"Project Title", saveButton:"Publish"}}
-                onSave={(uploadData) => {
-                    axios.post('/project', uploadData).then(() => {
-                        router.push("/project").then(console.log).catch(console.error)
-                    })
-                }
+            <ContentEditor prompts={{title: "Project Title", saveButton:"Save"}} onSave={(uploadData) => {
+                firestore.collection("projects").add(uploadData).then(() => {
+                    router.push(process.env.NextBasePath + "/projects").then(console.log).catch(console.error)
+                })}
             }/>
         </div>
     )

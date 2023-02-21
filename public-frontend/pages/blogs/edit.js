@@ -1,8 +1,6 @@
 import styles from '../../styles/Home.module.css'
 import { useRouter } from "next/router";
-import axios from "../../services/axiosService";
-import CustomHtmlViewer from "../../components/customHtmlTemplate/customHtmlViewer";
-import {useState} from "react";
+import { firestore } from "../../services/firebaseService";
 import ContentEditor from "../../components/contentTemplate/contentEditor";
 
 export default function Editor(){
@@ -13,11 +11,10 @@ export default function Editor(){
             <ContentEditor
                 prompts={{title:"Blog Title", saveButton:"Post"}}
                 onSave={(uploadData) => {
-                    axios.post('/blog', uploadData).then(() => {
-                        router.push("/blogs").then(console.log).catch(console.error)
-                    })
-                }
-            }/>
+                    firestore.collection("blogs").add(uploadData).then(() => {
+                        router.push(process.env.NextBasePath + "/blogs").then(console.log).catch(console.error)
+                    })}
+                }/>
         </div>
     )
 }

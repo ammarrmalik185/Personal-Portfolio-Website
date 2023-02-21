@@ -1,20 +1,24 @@
 import Head from 'next/head'
-import axios from "../../services/axiosService";
-import Image from 'next/image'
+import { firestore } from "../../services/firebaseService";
 import LatestBlogPost from '../../components/blogComponents/bigBlogPost'
 import BlogCard from '../../components/blogComponents/blogCard'
 import styles from '../../styles/Home.module.css'
 import { useEffect, useState } from "react";
 
-export default function Home() {
-  const [blogs, setBlogs] = useState([]);
+export default function Portfolios() {
+  const [portfolios, setPortfolios] = useState([]);
+  const [isInit, setIsInit] = useState(false);
   useEffect(() => {
-    axios.get("/portfolio").then(data => {
-      let array = data.data.data
-      console.log(array)
-      array.reverse();
-      setBlogs(array)
-    })
+    if(!isInit) {
+      firestore.collection("portfolios").get().then((querySnapshot) => {
+        let newPortfolios = [];
+        querySnapshot.forEach((doc) => {
+          newPortfolios.push({...doc.data(), id: doc.id})
+        });
+        setPortfolios(newPortfolios)
+      });
+      setIsInit(true);
+    }
   }, [])
   return (
     <div className={styles.container}>
@@ -46,13 +50,13 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-3 gap-3">
-          {blogs.sort().map((item) => {
+          {portfolios.sort().map((item) => {
             return(
                 <div className='mt-5' key={item.id}>
                   <BlogCard
-                      title={item.blogTitle}
-                      image="../../public/sunset.jpg"
-                      description={"by: " + item.blogAuthor}
+                      title={item.title}
+                      image={process.env.NextBasePath + "/sunset.jpg"}
+                      description={"by: " + item.author}
                       id={item.id}
                   ></BlogCard>
                 </div>

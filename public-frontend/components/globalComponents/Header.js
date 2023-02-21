@@ -10,9 +10,9 @@ export default function Header() {
 
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/" active={router.pathname.endsWith("")}>Home</Nav.Link>
-                        <Nav.Link href="/blogs" active={router.pathname.endsWith("/blogs")}>Blogs</Nav.Link>
-                        <Nav.Link href="/projects" active={router.pathname.endsWith("/projects")}>Projects</Nav.Link>
+                        <Nav.Link href={process.env.NextBasePath + "/"} active={router.pathname.endsWith("")}>Home</Nav.Link>
+                        <Nav.Link href={process.env.NextBasePath + "/blogs"} active={router.pathname.endsWith("/blogs")}>Blogs</Nav.Link>
+                        <Nav.Link href={process.env.NextBasePath + "/projects"} active={router.pathname.endsWith("/projects")}>Projects</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Navbar.Text>Login</Navbar.Text>

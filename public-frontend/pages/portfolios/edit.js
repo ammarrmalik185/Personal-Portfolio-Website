@@ -1,20 +1,17 @@
 import styles from '../../styles/Home.module.css'
 import { useRouter } from "next/router";
-import axios from "../../services/axiosService";
-import CustomHtmlViewer from "../../components/customHtmlTemplate/customHtmlViewer";
-import {useState} from "react";
 import ContentEditor from "../../components/contentTemplate/contentEditor";
+import {auth, firestore} from "../../services/firebaseService";
 
-export default function Editor(){
+export default function PortfolioEditor(){
     const router = useRouter();
      return(
         <div className={styles.editorPage} >
             <h1 className={styles.title}>Create Your Blog</h1>
             <ContentEditor prompts={{title: "Portfolio Title", saveButton:"Save"}} onSave={(uploadData) => {
-                    axios.post('/portfolio', uploadData).then(() => {
-                        router.push("/portfolio").then(console.log).catch(console.error)
-                    })
-                }
+                firestore.collection("portfolios").doc(auth.currentUser.uid).set(uploadData).then(() => {
+                    router.push(process.env.NextBasePath + "/portfolios").then(console.log).catch(console.error)
+                })}
             }/>
         </div>
     )

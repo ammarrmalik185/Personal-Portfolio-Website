@@ -1,35 +1,37 @@
-import Head from 'next/head'
+import { firestore } from "../../services/firebaseService";
 import Image from 'next/image'
 import {useRouter} from "next/router";
 import styles from '../../styles/Home.module.css'
 import {VscSearch} from 'react-icons/vsc';
 import {useEffect, useState} from "react";
-import axios from "../../services/axiosService";
 import CustomHtmlViewer from "../../components/customHtmlTemplate/customHtmlViewer";
 import BlogCard from "../../components/blogComponents/blogCard";
 
 export default function Blogpost() {
-    const [blogTitle, setBlogTitle] = useState("");
-    const [blogAuthor, setBlogAuthor] = useState("");
-    const [blogContent, setBlogContent] = useState([])
+    const [title, setTitle] = useState("");
+    const [author, setAuthor] = useState("");
+    const [content, setContent] = useState([])
     const [isInit, setIsInit] = useState(false);
     const Router = useRouter();
     useEffect(() => {
         if(!isInit){
             if (Router.query.id) {
                 if(isInit) return;
-                axios.get("/blog/" + Router.query.id).then(rawData => {
-                    let data = rawData.data.data;
-                    setBlogAuthor(data.blogAuthor);
-                    setBlogTitle(data.blogTitle);
-                    setBlogContent(data.blogContent.blocks);
+                firestore.collection("blogs").doc(Router.query.id).get().then(snapshot => {
+                    if (snapshot.exists) {
+                        let data = snapshot.data();
+                        setTitle(data.title);
+                        setAuthor(data.author);
+                        setContent(data.content.blocks);
+                    } else {
+                        Router.push(process.env.NextBasePath + "/blogs").then(console.log).catch(console.error);
+                    }
                 })
                 setIsInit(true);
             } else {
-                // Router.push("/");
+                Router.push(process.env.NextBasePath + "/blogs").then(console.log).catch(console.error);
             }
         }
-
     })
 
     return (
@@ -39,7 +41,7 @@ export default function Blogpost() {
                     <div className=''>
                         <div className={"font-montserrat font-bold text-[55px] text-center"}>
                             <h1 className={"text-4xl"}>
-                                {blogTitle}
+                                {title}
                             </h1>
                         </div>
                     </div>
@@ -48,8 +50,7 @@ export default function Blogpost() {
 
                     <div className='w-full lg:w-2/3 px-4 py-4 leading-6 '>
                         <CustomHtmlViewer
-                            contentBlocks={blogContent}
-                            title={blogTitle}
+                            contentBlocks={content}
                         />
 
                         <div>
@@ -83,7 +84,7 @@ export default function Blogpost() {
                                 </div>
                                 <div>
                                     <p className={"font-montserrat font-bold text-[20px] text-[#253D4E]"}>
-                                        {blogAuthor}
+                                        {author}
                                     </p>
                                     <div className='flex font-sans font-normal text-[12px] text-[#A0ABB8] space-x-2'>
                                         <p>
