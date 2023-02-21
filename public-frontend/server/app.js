@@ -31,7 +31,7 @@ function initializeApp(app){
     app.use(express.static(path.join(__dirname, 'app_server/public')));
 
     // routes
-    app.use('/api', indexRouter);
+    app.use('/Personal-Portfolio-Website/api', indexRouter);
 
     // error handler
     app.use(errorHandler);
