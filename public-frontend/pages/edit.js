@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css'
 import { useRouter } from "next/router";
-import axios from "../services/axiosService";
+import { firestore } from "../services/firebaseService"
 import ContentEditor from "../components/contentTemplate/contentEditor";
 
 export default function Editor(){
@@ -12,10 +12,10 @@ export default function Editor(){
             prompts={
                 {title: "Portfolio Title", saveButton: "Save"}
             } onSave={(uploadData) => {
-                axios.put('/portfolio/ammarRashidMalik', uploadData).then(() => {
-                    router.push("/").then(console.log).catch(console.error)
-                })
-            }}/>
+                firestore.collection("portfolios").doc("ammarRashidMalik").set(uploadData).then(() => {
+                    router.push(process.env.NextBasePath + "/portfolios").then(console.log).catch(console.error)
+                })}
+            }/>
         </div>
     )
 }
