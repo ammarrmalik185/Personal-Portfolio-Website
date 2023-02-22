@@ -22,15 +22,3 @@ export default function Header() {
         </Navbar>
     );
 }
-
-const styles = {
-    navLink:{
-        color:"white"
-    },
-    navTitle:{
-        color:"white"
-    },
-    navToggle:{
-        color:"white"
-    }
-}

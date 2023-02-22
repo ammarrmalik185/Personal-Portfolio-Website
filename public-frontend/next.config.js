@@ -1,4 +1,5 @@
 require("dotenv")
+const staticData = require("./staticData.json")
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -8,7 +9,7 @@ const nextConfig = {
     loader: 'akamai',
     path: '/images'
   },
-   basePath: '/Personal-Portfolio-Website',
+   basePath: staticData.pathingData.baseUrl,
 }
 
 module.exports = nextConfig

@@ -10,7 +10,6 @@
   --alert: #641212;
 }
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,7 +37,7 @@
 
 html,
 body {
-  background-color: #4b4b4b;
+  background-color: var(--primary);
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,

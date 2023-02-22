@@ -20,9 +20,12 @@ export default function Home() {
   return (
     <div className={styles.container}>
        <main className={styles.main}>
-        <h1 className={styles.title}>
-          Here are the blogs written by me
-        </h1>
+           <h1 className={styles.title}>
+               Welcome to Blogs
+           </h1>
+           <h2 className={styles.subTitle}>
+               Here are the blogs written by me
+           </h2>
 
         <div className="px-5 pt-4 pb-2">
              <span className="inline-block bg-[#f3fbfb] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">Recruitment</span>

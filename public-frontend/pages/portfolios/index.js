@@ -23,10 +23,10 @@ export default function Portfolios() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Relevant news and more for you
+          Welcome to Portfolios
         </h1>
         <h2 className={styles.subTitle}>
-          Welcome to our Blog
+          Browse profiles of people
         </h2>
 
         <div className="grid grid-cols-3 gap-3">
