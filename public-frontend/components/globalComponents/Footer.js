@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import {CurrentTheme} from "../../styles/colorSchemes";
-const staticData = require("../../env/staticData.json")
+const staticData = require("../../staticData.json")
 
 export default function Footer(){
     return(
