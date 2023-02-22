@@ -28,7 +28,7 @@ export default function Blogpost() {
     })
 
     return (
-        <Collapse className={styles.container} in={title !== ""} style={{backgroundColor: CurrentTheme.secondary}}>
+        <Collapse className={styles.container} in={true} style={{backgroundColor: CurrentTheme.secondary}}>
             <main>
                 <section>
                     <div className=''>

@@ -59,6 +59,7 @@
   background: #fafafa;
   border-radius: 5px;
   padding: 0.75rem;
+  text-align: left;
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
@@ -146,4 +147,47 @@
   width: 100%;
   height: 100%;
   overflow: auto;
+}
+
+.customHtmlTable {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  background-color: #444;
+  color: #fff;
+}
+.customHtmlTableHeader, .customHtmlTableData {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+.customHtmlTableRow :hover {
+  background-color: #555;
+}
+.customHtmlTableHeader {
+  background-color: #333;
+  color: #fff;
+  border-right: 1px solid #ddd;
+}
+
+.customHtmlBlockquote {
+  border-left: 5px solid #ccc;
+  padding-left: 10px;
+  margin-left: 0;
+  font-style: italic;
+  font-size: xx-large;
+}
+
+.customHtmlBlockquoteFooter {
+  margin-top: 10px;
+  font-style: normal;
+  font-size: medium;
+  text-align: right;
+  color: #888;
+}
+
+.customHtmlDelimiterStars{
+  text-align: center;
+  font-size: xx-large;
 }

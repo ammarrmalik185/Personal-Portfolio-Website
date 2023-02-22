@@ -1,14 +1,14 @@
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header'
 import List from '@editorjs/list';
-import Embed from '@editorjs/embed';
 import InlineImage from 'editorjs-inline-image';
 const RawTool = require('@editorjs/raw');
+import Table from '@editorjs/table';
 const Paragraph = require('editorjs-paragraph-with-alignment');
-
-// import Image from '@editorjs/simple-image'
-// import Quote from '@editorjs/quote';
-// import SimpleImage from '@editorjs/simple-image'
+import Quote from '@editorjs/quote';
+const LinkTool = require('@editorjs/link');
+const Delimiter = require('@editorjs/delimiter');
+const CodeTool = require('@editorjs/code');
 
 const editor = new EditorJS({
     holder: 'editorHolder',
@@ -31,30 +31,36 @@ const editor = new EditorJS({
                 embed: {
                     display: true,
                 },
-                unsplash: {
-                    appName: 'Glass Polymorphism',
-                    clientId: 'RJzPnUYptbBz3VALcb6IFHCrORoTWqA3Mg8cUoDqQuc'
+                unsplash:{
+                    appName: 'Portfolio Website',
+                    clientId: 'za5eB4XR4uyOZDGTF3CD1Kcp8xlC96gKFs4tBo1BoXY'
                 }
             }
+        },
+        table: {
+            class: Table,
+            inlineToolbar: true,
+            config: {
+                rows: 2,
+                cols: 3,
+            },
         },
         raw: RawTool,
         list: {
             class: List,
             inlineToolbar: true,
         },
-        embded: {
-            class: Embed
+        quote: {
+            class: Quote,
+            inlineToolbar: true,
+            shortcut: 'CMD+SHIFT+O',
+            config: {
+                quotePlaceholder: 'Enter a quote',
+                captionPlaceholder: 'Quote\'s author',
+            },
         },
-        // quote: {
-        //     class: Quote,
-        //     inlineToolbar: true,
-        //     shortcut: 'CMD+SHIFT+O',
-        //     config: {
-        //         quotePlaceholder: 'Enter a quote',
-        //         captionPlaceholder: 'Quote\'s author',
-        //     },
-        // },
-
+        delimiter: Delimiter,
+        code:CodeTool
     },
     data:{
         blocks:[

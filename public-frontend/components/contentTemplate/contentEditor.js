@@ -74,15 +74,27 @@ function clarifyContent(blocks) {
     return blocks.map(block => {
         switch (block.type) {
             case "header":
-            case "embded":
             case "paragraph":
             case "delimiter":
             case "list":
+
             case "raw":
+            case "code":
+            case "quote":
+            case "link":
                 return block;
             case "image":
                 if(block.data.unsplash === undefined)
                     block.data.unsplash = "";
+                return block;
+            case "table":
+                let i = 0;
+                block.data.content = block.data.content.map(value => {
+                    i++;
+                    return {
+                        row:value
+                    }
+                })
                 return block;
             default:
                 console.log("Unknown block type", block.type);
