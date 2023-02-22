@@ -13,7 +13,7 @@ export default function Editor(){
                 {title: "Portfolio Title", saveButton: "Save"}
             } onSave={(uploadData) => {
                 firestore.collection("portfolios").doc("ammarRashidMalik").set(uploadData).then(() => {
-                    router.push(process.env.NextBasePath + "/portfolios").then(console.log).catch(console.error)
+                    router.push("/Personal-Portfolio-Website").then(console.log).catch(console.error)
                 })}
             }/>
         </div>

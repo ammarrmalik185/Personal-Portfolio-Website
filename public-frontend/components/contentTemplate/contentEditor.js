@@ -4,6 +4,7 @@ import {useState} from "react";
 import InputField from "../basicComponents/InputField";
 import {BlueButton, GreenButton} from "../basicComponents/CustomButtons";
 import dynamic from "next/dynamic";
+import Parser from "html-react-parser";
 const CustomHtmlEditor = dynamic(() => import('../customHtmlTemplate/customHtmlEditor'), { ssr: false })
 
 export default function ContentEditor({ prompts, onSave}){
@@ -49,8 +50,9 @@ export default function ContentEditor({ prompts, onSave}){
                         let dataFormatted = {
                             title: document.getElementById('title').value,
                             tags: document.getElementById('tags').value,
-                            content: data
+                            content: {...data, blocks: clarifyContent(data.blocks)}
                         }
+                        console.log(dataFormatted)
                         onSave(dataFormatted);
                     })
 
@@ -65,4 +67,26 @@ export default function ContentEditor({ prompts, onSave}){
 
         </div>
     )
+}
+
+function clarifyContent(blocks) {
+
+    return blocks.map(block => {
+        switch (block.type) {
+            case "header":
+            case "embded":
+            case "paragraph":
+            case "delimiter":
+            case "list":
+            case "raw":
+                return block;
+            case "image":
+                if(block.data.unsplash === undefined)
+                    block.data.unsplash = "";
+                return block;
+            default:
+                console.log("Unknown block type", block.type);
+                break;
+        }
+    });
 }
