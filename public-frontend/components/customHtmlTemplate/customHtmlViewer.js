@@ -27,15 +27,15 @@ function convertDataToHtml(blocks) {
                 break;
             case "list":
                 if (block.data.style === "unordered") {
-                    convertedHtml += "<ul class='cdx-list__item cdx-list--unordered'>";
+                    convertedHtml += `<ul className=${styles.customHtmlUnorderedList}>`;
                     block.data.items.forEach(function (li) {
-                        convertedHtml += `<li>${li}</li>`;
+                        convertedHtml += `<li className=${styles.customHtmlUnorderedListItem}>${li}</li>`;
                     });
                     convertedHtml += "</ul>";
                 } else if (block.data.style === "ordered") {
-                    convertedHtml += "<ol class='cdx-list__item cdx-list--ordered'>";
-                    block.data.items.forEach(function (li) {
-                        convertedHtml += `<li>${li}</li>`;
+                    convertedHtml += `<ol className=${styles.customHtmlUnorderedList}>`;
+                    block.data.items.forEach(function (li, i) {
+                        convertedHtml += `<li className=${styles.customHtmlUnorderedListItem}>${i+1 + ": " + li}</li>`;
                     });
                     convertedHtml += "</ol>";
                 }

@@ -1,4 +1,3 @@
-
 export let DarkTheme = {
     primary: "rgba(33,37,41, 1)",
     secondary: "#4b4b4b",
@@ -12,3 +11,9 @@ export let DarkTheme = {
 }
 
 export let CurrentTheme = DarkTheme;
+
+export let ApplyTheme = function (root) {
+    for(let value in CurrentTheme){
+        root.style.setProperty('--' + value, CurrentTheme[value])
+    }
+}
