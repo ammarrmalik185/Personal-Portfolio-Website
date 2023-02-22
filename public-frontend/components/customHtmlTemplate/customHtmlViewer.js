@@ -17,10 +17,10 @@ function convertDataToHtml(blocks) {
     blocks.map(block => {
         switch (block.type) {
             case "header":
-                convertedHtml += `<h${block.data.level} style="margin: 10px">${block.data.text}</h${block.data.level}>`;
+                convertedHtml += `<h${block.data.level} className=${styles.customHtmlHeading} style="margin: 10px">${block.data.text}</h${block.data.level}>`;
                 break;
             case "paragraph":
-                convertedHtml += `<p style="text-align: ${block.data.alignment}; margin: 10px">${block.data.text}</p>`;
+                convertedHtml += `<p className=${styles.customHtmlParagraph} style="text-align: ${block.data.alignment}; margin: 10px">${block.data.text}</p>`;
                 break;
             case "delimiter":
                 convertedHtml += `<hr /><p className=${styles.customHtmlDelimiterStars}>* * *</p><hr/>`;
@@ -41,14 +41,17 @@ function convertDataToHtml(blocks) {
                 }
                 break;
             case "image":
-                convertedHtml += `<div style="display: flex; class="${block.data.withBackground ? 'inline-image__picture--withBackground' : ''}" justify-content: center"><img style="text-align: center; width: 100%; object-fit: contain; max-height: 400px" class="img-fluid" src="${block.data.url}" title="${block.data.caption}"  alt="image"/></div><p style="text-align: center">${block.data.caption}</p>`;
+                convertedHtml += `<div style="display: flex; class="${block.data.withBackground ? 'inline-image__picture--withBackground' : ''}" justify-content: center">
+                                        <img className=${styles.customHtmlImage} src="${block.data.url}" title="${block.data.caption}"  alt="image"/>
+                                    </div>
+                                    <p className=${styles.customHtmlImageCaption} style="text-align: center">${block.data.caption}</p>`;
                 break;
             case "raw":
-                convertedHtml += block.data.html;
+                convertedHtml += `<div className=${styles.customHtmlRawHtml}>${block.data.html}</div>`;
                 break;
             case "code":
                 let stringParsed = block.data.code.replace(/\n/g, "<br>");
-                convertedHtml += `<p className=${styles.code}>${stringParsed}</p>`
+                convertedHtml += `<p className=${styles.customHtmlCode}>${stringParsed}</p>`
                 break;
             case "table":
                 convertedHtml += `<table className=${styles.customHtmlTable}>`

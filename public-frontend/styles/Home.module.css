@@ -1,4 +1,5 @@
 .container {
+  margin-top: 0;
   padding: 0 2rem;
   background-color: var(--secondary);
 }
@@ -39,13 +40,18 @@
 }
 
 .title {
-  margin: 0;
+  padding-top: 20px;
   line-height: 1.15;
   font-size: 4rem;
 }
 
+.subTitle{
+  color: var(--textSecondary);
+}
+
 .title,
 .description {
+  color: var(--text);
   text-align: center;
 }
 
@@ -53,16 +59,6 @@
   margin: 4rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  text-align: left;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
 .grid {
@@ -168,34 +164,59 @@
   margin-bottom: 5px;
 }
 
+.customHtmlHeading{
+  color:var(--text)
+}
+
+.customHtmlParagraph{
+  color:var(--text)
+}
+
+.customHtmlImage{
+  text-align: center;
+  width: 100%;
+  object-fit: contain;
+  max-height: 400px
+}
+
+.customHtmlImageCaption{
+  color:var(--text)
+}
+
+.customHtmlRawHtml{
+  color:var(--text)
+}
+
 .customHtmlTable {
   border-collapse: collapse;
   width: 100%;
   margin: 20px 0;
   background-color: #444;
   color: #fff;
+  border: 1px solid var(--primary)
 }
 .customHtmlTableHeader, .customHtmlTableData {
   text-align: left;
   padding: 8px;
-  border-bottom: 1px solid #ddd;
-  border-right: 1px solid #ddd;
+  border-bottom: 1px solid var(--primary);
+  border-right: 1px solid var(--primary);
 }
 .customHtmlTableRow :hover {
   background-color: #555;
 }
 .customHtmlTableHeader {
-  background-color: #333;
-  color: #fff;
-  border-right: 1px solid #ddd;
+  background-color: var(--primary);
+  color: var(--text);
+  border-right: 1px solid var(--primary);
 }
 
 .customHtmlBlockquote {
-  border-left: 5px solid #ccc;
+  border-left: 5px solid var(--text);
   padding-left: 10px;
   margin-left: 0;
   font-style: italic;
   font-size: xx-large;
+  color:  var(--text)
 }
 
 .customHtmlBlockquoteFooter {
@@ -203,12 +224,24 @@
   font-style: normal;
   font-size: medium;
   text-align: right;
-  color: #888;
+  color:  var(--textSecondary);
 }
 
 .customHtmlDelimiterStars{
   text-align: center;
   font-size: xx-large;
+  color: var(--textSecondary)
+}
+
+.customHtmlCode {
+  background: var(--primary);
+  color:var(--text);
+  border-radius: 5px;
+  padding: 0.75rem;
+  text-align: left;
+  font-size: 1.1rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+  Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
 .customHtmlUnorderedList {

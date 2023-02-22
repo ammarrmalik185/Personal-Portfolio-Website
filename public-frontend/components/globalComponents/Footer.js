@@ -1,5 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import {CurrentTheme} from "../../styles/colorSchemes";
+const staticData = require("../../env/staticData.json")
 
 export default function Footer(){
     return(
@@ -27,11 +28,11 @@ export default function Footer(){
                     </Col>
                     <Col>
                         <Row style={styles.text}><h4>Contact Me</h4></Row>
-                        <Row style={styles.text}>Phone Number: 03349564896</Row>
-                        <Row style={styles.text}>Address: 03349564896</Row>
-                        <Row style={styles.text}>Github: https://github.com/ammarrmalik185</Row>
-                        <Row style={styles.text}>Facebook: 03349564896</Row>
-                        <Row style={styles.text}>Instagram: 03349564896</Row>
+                        <Row style={styles.text}>Phone Number: {staticData.websiteData.contactNo}</Row>
+                        <Row style={styles.text}><div>Email: <a href={staticData.websiteData.email.url}>{staticData.websiteData.email.title}</a></div></Row>
+                        <Row style={styles.text}><div>Github: <a href={staticData.websiteData.github.url}>{staticData.websiteData.github.title}</a></div></Row>
+                        <Row style={styles.text}><div>Twitter: <a href={staticData.websiteData.twitter.url}>{staticData.websiteData.twitter.title}</a></div></Row>
+                        <Row style={styles.text}><div>Instagram: <a href={staticData.websiteData.instagram.url}>{staticData.websiteData.instagram.title}</a></div></Row>
                     </Col>
                 </Row>
                 <Row style={styles.row}>
@@ -44,10 +45,6 @@ export default function Footer(){
 
 const styles = {
     footer:{
-        // position: "absolute",
-        // left:0,
-        // right:0,
-        // bottom: 0,
         margin:0,
         padding: 0,
         backgroundColor: CurrentTheme.primary
@@ -56,7 +53,7 @@ const styles = {
         color:"white"
     },
     row:{
-        marginTop: 10,
+        // marginTop: 10,
         marginBottom: 10,
         alignItems: "center"
     }

@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { firestore } from "../../services/firebaseService";
-import LatestBlogPost from '../../components/blogComponents/bigBlogPost'
-import BlogCard from '../../components/blogComponents/blogCard'
+import ProjectCard from '../../components/projectComponents/projectCard'
 import styles from '../../styles/Home.module.css'
 import { useEffect, useState } from "react";
 
@@ -10,7 +9,7 @@ export default function Home() {
   const [isInit, setIsInit] = useState(false);
   useEffect(() => {
     if(!isInit) {
-      firestore.collection("portfolios").get().then((querySnapshot) => {
+      firestore.collection("projects").get().then((querySnapshot) => {
         let newPortfolios = [];
         querySnapshot.forEach((doc) => {
           newPortfolios.push({...doc.data(), id: doc.id})
@@ -30,10 +29,10 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Relevant news and more for you
+          Projects that I have developed
         </h1>
-        <h2 className='text-2xl'>
-          Welcome to our Blog
+        <h2 className={styles.subTitle}>
+          Welcome to our Projects
         </h2>
 
         <div className="px-5 pt-4 pb-2">
@@ -44,48 +43,30 @@ export default function Home() {
              <span className="inline-block bg-[#f3fbfb] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">Contributors</span>
         </div>
 
-        <div className='grid grid-cols-2 justify-between gap-3'>
-          <LatestBlogPost />
-          <LatestBlogPost />
-        </div>
-
         <div className="grid grid-cols-3 gap-3">
           {projects.sort().map((item) => {
             return(
                 <div className='mt-5' key={item.id}>
-                  <BlogCard
+                  <ProjectCard
                       title={item.title}
                       image={process.env.NextBasePath + "/sunset.jpg"}
                       description={"by: " + item.author}
                       id={item.id}
-                  ></BlogCard>
+                  />
                 </div>
             )
           })}
         </div>
 
-        {/* page number slider  */}
+          <div className="flex justify-center mt-8">
+              <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">1</div>
+              <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">2</div>
+              <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">3</div>
+              <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">4</div>
+              <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">5</div>
+              <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">6</div>
 
-        <div className="flex justify-center mt-8">
-          <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">1</div>
-          <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">2</div>
-          <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">3</div>
-          <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">4</div>
-          <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">5</div>
-          <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">6</div>
-
-        </div>
-
-        {/* name of companies */}
-
-        <div className="flex justify-center mt-8">
-          <div className="inline-block font-sans px-3 py-1 text-3xl font-semibold text-gray-500 mr-3 mb-2">Samsung</div>
-          <div className="inline-block font-sans px-3 py-1 text-3xl font-semibold text-gray-500 mr-3 mb-2">Google</div>
-          <div className="inline-block font-tahoma px-3 py-1 text-3xl font-semibold text-gray-500 mr-3 mb-2">facebook</div>
-          <div className="inline-block font-sans px-3 py-1 text-3xl font-semibold text-gray-500 mr-3 mb-2">Pinterest</div>
-          <div className="inline-block font-serif px-3 py-1 text-3xl font-semibold text-gray-500 mr-3 mb-2">Forbes</div>
-        </div>
-
+          </div>
       </main>
     </div>
   )

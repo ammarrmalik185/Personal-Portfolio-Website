@@ -10,7 +10,10 @@ export default function PortfolioEditor(){
             <h1 className={styles.title}>Create Your Blog</h1>
             <ContentEditor prompts={{title: "Portfolio Title", saveButton:"Save"}} onSave={(uploadData) => {
                 firestore.collection("portfolios").doc(auth.currentUser.uid).set(uploadData).then(() => {
-                    router.push(process.env.NextBasePath + "/portfolios").then(console.log).catch(console.error)
+                    router.push({
+                        pathname: "/portfolios/post",
+                        query:{id: auth.currentUser.uid}
+                    }).then(console.log).catch(console.error)
                 })}
             }/>
         </div>

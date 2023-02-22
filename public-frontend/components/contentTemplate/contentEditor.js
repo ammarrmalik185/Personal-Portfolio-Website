@@ -42,7 +42,7 @@ export default function ContentEditor({ prompts, onSave}){
                 </div>
 
             </div>
-            <div className='flex flex-1 justify-center space-x-2'>
+            <div className='flex flex-1 justify-center space-x-2 pb-10'>
                 <GreenButton title={prompts.saveButton} onClick={() => {
                     editor.save().then(data => {
                         setData(data)

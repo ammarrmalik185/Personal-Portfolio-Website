@@ -9,6 +9,27 @@
     "messagingSenderId": "947894610775",
     "appId": "1:947894610775:web:68a687b89b285bafceec12",
     "measurementId": "G-3WZYEMFQWQ"
+  },
+  "websiteData": {
+    "title": "Ammar's Portfolio",
+
+    "contactNo": "03349564896",
+    "email": {
+      "title": "Ammar Rashid Malik",
+      "url": "mailto:ammarrmalik185@hotmail.com"
+    },
+    "github": {
+      "title": "Ammar Malik",
+      "url": "https://github.com/ammarrmalik185"
+    },
+    "twitter": {
+      "title": "@ammarrmalik185",
+      "url": "https://github.com/ammarrmalik185"
+    },
+    "instagram": {
+      "title": "@ammarrmalik185",
+      "url": "https://github.com/ammarrmalik185"
+    }
   }
 
 }

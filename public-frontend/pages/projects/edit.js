@@ -9,8 +9,11 @@ export default function Editor(){
         <div className={styles.editorPage} >
             <h1 className={styles.title}>Publish your Project</h1>
             <ContentEditor prompts={{title: "Project Title", saveButton:"Save"}} onSave={(uploadData) => {
-                firestore.collection("projects").add(uploadData).then(() => {
-                    router.push(process.env.NextBasePath + "/projects").then(console.log).catch(console.error)
+                firestore.collection("projects").add(uploadData).then((savedData) => {
+                    router.push({
+                        pathname: "/projects/post",
+                        query:{id: savedData.id}
+                    }).then(console.log).catch(console.error)
                 })}
             }/>
         </div>

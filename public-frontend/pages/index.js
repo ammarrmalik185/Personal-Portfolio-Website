@@ -28,12 +28,12 @@ export default function Blogpost() {
     })
 
     return (
-        <Collapse className={styles.container} in={true} style={{backgroundColor: CurrentTheme.secondary}}>
+        <Collapse className={styles.container} in={true}>
             <main>
                 <section>
                     <div className=''>
                         <div className={"font-montserrat font-bold text-[55px] text-center"}>
-                            <h1 style={{color: CurrentTheme.text}} className={styles.title}>
+                            <h1 className={styles.title}>
                                 {title}
                             </h1>
                         </div>

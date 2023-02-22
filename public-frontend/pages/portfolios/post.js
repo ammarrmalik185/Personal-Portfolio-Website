@@ -22,26 +22,24 @@ export default function PortfolioSingle() {
                         setTitle(data.title);
                         setContent(data.content.blocks);
                     } else {
-                        Router.push(process.env.NextBasePath + "/portfolios").then(console.log).catch(console.error);
+                        Router.push("/portfolios").then(console.log).catch(console.error);
                     }
                 })
                 setIsInit(true);
             } else {
-                Router.push(process.env.NextBasePath + "/portfolios").then(console.log).catch(console.error);
+                Router.push("/portfolios").then(console.log).catch(console.error);
             }
         }
     })
 
     return (
         <div className={styles.container}>
-            <main className='mx-20 px-10'>
-                <section className='mt-3'>
-                    <div className=''>
-                        <div className={"font-montserrat font-bold text-[55px] text-center"}>
-                            <h1 className={"text-4xl"}>
-                                {title}
-                            </h1>
-                        </div>
+            <main>
+                <section>
+                    <div>
+                        <h1 className={styles.title}>
+                            {title}
+                        </h1>
                     </div>
                 </section>
                 <section className='flex mt-3 w-full space-x-4'>

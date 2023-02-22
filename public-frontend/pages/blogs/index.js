@@ -2,7 +2,6 @@ import { firestore } from "../../services/firebaseService";
 import BlogCard from '../../components/blogComponents/blogCard'
 import styles from '../../styles/Home.module.css'
 import { useEffect, useState } from "react";
-
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
   const [isInit, setIsInit] = useState(false);
@@ -42,11 +41,20 @@ export default function Home() {
                       image={process.env.NextBasePath + "/sunset.jpg"}
                       description={"by: " + item.author}
                       id={item.id}
-                  ></BlogCard>
+                  />
                 </div>
             )
           })}
         </div>
+
+       <div className="flex justify-center mt-8">
+           <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">1</div>
+           <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">2</div>
+           <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">3</div>
+           <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">4</div>
+           <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">5</div>
+           <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">6</div>
+       </div>
 
       </main>
     </div>
