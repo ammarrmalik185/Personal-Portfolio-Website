@@ -81,7 +81,7 @@ export default function PortfolioSingle() {
                                 </div>
                                 <div>
                                     <p className={"font-montserrat font-bold text-[20px] text-[#253D4E]"}>
-                                        {blogAuthor}
+                                        {"Ammar Rashid Malik"}
                                     </p>
                                     <div className='flex font-sans font-normal text-[12px] text-[#A0ABB8] space-x-2'>
                                         <p>
