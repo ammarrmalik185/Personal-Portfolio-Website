@@ -2,7 +2,6 @@ import { firestore } from "../../services/firebaseService";
 import BlogCard from '../../components/blogComponents/blogCard'
 import styles from '../../styles/Home.module.css'
 import { useEffect, useState } from "react";
-import {CurrentTheme} from "../../styles/colorSchemes";
 
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
@@ -20,7 +19,7 @@ export default function Home() {
       }
   }, [])
   return (
-    <div className={styles.container} style={{backgroundColor: CurrentTheme.secondary}}>
+    <div className={styles.container}>
        <main className={styles.main}>
         <h1 className={styles.title}>
           Here are the blogs written by me
@@ -33,11 +32,6 @@ export default function Home() {
              <span className="inline-block bg-[#f3fbfb] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">Job Tips</span>
              <span className="inline-block bg-[#f3fbfb] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">Contributors</span>
         </div>
-
-        {/*<div className='grid grid-cols-2 justify-between gap-3'>*/}
-        {/*  <LatestBlogPost />*/}
-        {/*  <LatestBlogPost />*/}
-        {/*</div>*/}
 
         <div className="grid grid-cols-3 gap-3">
           {blogs.sort().map((item) => {
@@ -53,20 +47,6 @@ export default function Home() {
             )
           })}
         </div>
-
-        {/* page number slider  */}
-
-        {/*<div className="flex justify-center mt-8">*/}
-        {/*  <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">1</div>*/}
-        {/*  <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">2</div>*/}
-        {/*  <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">3</div>*/}
-        {/*  <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">4</div>*/}
-        {/*  <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">5</div>*/}
-        {/*  <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">6</div>*/}
-
-        {/*</div>*/}
-
-        {/* name of companies */}
 
       </main>
     </div>

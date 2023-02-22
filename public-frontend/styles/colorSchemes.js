@@ -11,9 +11,3 @@ export let DarkTheme = {
 }
 
 export let CurrentTheme = DarkTheme;
-
-export let ApplyTheme = function (root) {
-    for(let value in CurrentTheme){
-        root.style.setProperty('--' + value, CurrentTheme[value])
-    }
-}

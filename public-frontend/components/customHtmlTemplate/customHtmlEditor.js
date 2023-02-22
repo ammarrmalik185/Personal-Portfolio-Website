@@ -10,6 +10,8 @@ const LinkTool = require('@editorjs/link');
 const Delimiter = require('@editorjs/delimiter');
 const CodeTool = require('@editorjs/code');
 
+import styles from '../../styles/Home.module.css'
+
 const editor = new EditorJS({
     holder: 'editorHolder',
     tools: {
@@ -80,7 +82,7 @@ export default function CustomHtmlEditor({ data , onEditor }) {
     }
     onEditor(editor);
     return(
-        <div className='flex flex-1 justify-center space-x-2'>
+        <div className={styles.editorHolder}>
             <div id='editorHolder' className='bg-gray'/>
         </div>
     )

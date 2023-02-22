@@ -4,7 +4,6 @@ import {useState} from "react";
 import InputField from "../basicComponents/InputField";
 import {BlueButton, GreenButton} from "../basicComponents/CustomButtons";
 import dynamic from "next/dynamic";
-import Parser from "html-react-parser";
 const CustomHtmlEditor = dynamic(() => import('../customHtmlTemplate/customHtmlEditor'), { ssr: false })
 
 export default function ContentEditor({ prompts, onSave}){
@@ -18,11 +17,11 @@ export default function ContentEditor({ prompts, onSave}){
             <div className='flex justify-center mt-5'>
                 <div className="flex justify-center">
                     <div className="mb-3 xl:w-96 mr-3">
-                        <label htmlFor="title" className="form-label inline-block mb-2 text-gray-700">{prompts.title}</label>
+                        <label htmlFor="title" className={styles.formLabel}>{prompts.title}</label>
                         <InputField type="text" id="title" placeholder={"Enter " + prompts.title} value={title} onChange={setTitle}/>
                     </div>
                     <div className="mb-3 xl:w-96 mr-3">
-                        <label htmlFor="title" className="form-label inline-block mb-2 text-gray-700">Tags</label>
+                        <label htmlFor="title" className={styles.formLabel}>Tags</label>
                         <InputField type="text" id="tags" placeholder="Enter Blog Tags" value={tags} onChange={setTags}/>
                     </div>
                 </div>
