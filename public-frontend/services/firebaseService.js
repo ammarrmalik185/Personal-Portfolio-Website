@@ -5,7 +5,7 @@ import "firebase/database";
 import "firebase/storage";
 
 try{
-    firebase.initializeApp(require("../env/staticData.json").firebaseConfig);
+    firebase.initializeApp(require("../staticData.json").firebaseConfig);
 }catch (e) {
     console.error(e)
 }
