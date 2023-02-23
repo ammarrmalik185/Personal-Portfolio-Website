@@ -63,6 +63,10 @@ body {
   box-sizing: border-box;
 }
 
+.ce-block--selected .ce-block__content{
+  background-color: var(--primary) !important;
+}
+
 .ce-paragraph{
   color:var(--text)
 }
@@ -82,9 +86,6 @@ body {
   color: var(--text) !important;
 }
 
-.icon{
-  color: var(--text)
-}
 
 .tc-add-column:hover, .tc-add-row:hover{
   background-color: var(--primary) !important;
@@ -100,6 +101,10 @@ body {
 
 .row>*{
   padding-left: 0 !important;
+}
+
+.nav-link.active{
+  color: var(--text) !important;
 }
 
 

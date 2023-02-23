@@ -2,8 +2,6 @@ const staticData = require("../staticData.json")
 const pagesData = staticData.pathingData.pageEnum;
 export function detectPage(pathname) {
 
-    console.log(pathname);
-
     if (pathname.split("?")[0].endsWith("/blogs")) return pagesData.blogs;
     if (pathname.split("?")[0].endsWith("/blogs/edit")) return pagesData.blogEdit;
     if (pathname.split("?")[0].endsWith("/blogs/post")) return pagesData.blogSingle;

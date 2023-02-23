@@ -103,12 +103,22 @@
   background-color: var(--primary);
   color: var(--text);
 }
+.headerBrand{
+  color: var(--text) !important;
+}
+.headerText{
+  color: var(--text) !important;
+}
 .headerNavLink{
   color: var(--textSecondary);
 }
-.headerNavLink :active{
-  color: var(--text);
+.headerNavLink.active{
+  color: var(--text) !important;
 }
+.headerNavLink :hover{
+  color: var(--text) !important;
+}
+
 
 /*Footer Styles*/
 .footer{
@@ -190,11 +200,12 @@
   color:var(--text)
 }
 .customHtmlTable {
+  border-radius: 10px;
   border-collapse: collapse;
   width: 100%;
   margin: 20px 0;
   background-color: var(--secondary);
-  color: var(--texte);
+  color: var(--text);
   border: 1px solid var(--primary)
 }
 .customHtmlTableHeader, .customHtmlTableData {
@@ -246,16 +257,14 @@
   list-style-type: none;
   padding-left: 0;
   margin-bottom: 20px;
-  border: 1px solid var(--primary);
   border-radius: 5px;
-  background-color: var(--primary);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 .customHtmlUnorderedListItem {
   padding: 10px;
-  border-bottom: 1px solid var(--primary);
+  border-bottom: 1px solid var(--secondary);
   color: var(--text);
   background-color: var(--primary);
+  border-radius: 10px ;
   font-size: 16px;
   line-height: 1.4;
 }

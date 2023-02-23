@@ -1,6 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
 import styles from "../../styles/Home.module.css";
-import { CurrentTheme } from "../../styles/colorSchemes";
 import Parser from "html-react-parser";
 const staticData = require("../../staticData.json")
 
