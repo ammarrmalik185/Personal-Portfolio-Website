@@ -1,14 +1,29 @@
+/*Themes*/
 :root {
   --primary: rgba(33,37,41, 1);
   --secondary: #383d40;
   --text: #ffffff;
   --textSecondary: #9d9d9d;
   --highlights: #9d9b60;
-  --contrast: #696969;
+  --contrast: #1e87e3;
+  --contrastDark:#0d47a1;
   --warning: #6c7718;
   --success: #0b460c;
   --alert: #641212;
 }
+
+/*:root {*/
+/*  --primary: rgb(155, 155, 155);*/
+/*  --secondary: #ffffff;*/
+/*  --text: #000000;*/
+/*  --textSecondary: #4d4a4a;*/
+/*  --highlights: #9d9b60;*/
+/*  --contrast: #1e87e3;*/
+/*  --contrastDark:#0d47a1;*/
+/*  --warning: #6c7718;*/
+/*  --success: #0b460c;*/
+/*  --alert: #641212;*/
+/*}*/
 
 @tailwind base;
 @tailwind components;
@@ -37,7 +52,7 @@
 
 html,
 body {
-  background-color: var(--primary);
+  background-color: var(--secondary) !important;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -46,6 +61,10 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+.ce-block--selected .ce-block__content{
+  background-color: var(--primary) !important;
 }
 
 .ce-paragraph{
@@ -67,9 +86,6 @@ body {
   color: var(--text) !important;
 }
 
-.icon{
-  color: var(--text)
-}
 
 .tc-add-column:hover, .tc-add-row:hover{
   background-color: var(--primary) !important;
@@ -85,6 +101,10 @@ body {
 
 .row>*{
   padding-left: 0 !important;
+}
+
+.nav-link.active{
+  color: var(--text) !important;
 }
 
 

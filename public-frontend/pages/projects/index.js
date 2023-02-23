@@ -43,7 +43,7 @@ export default function Home() {
                 <div className='mt-5' key={item.id}>
                   <ProjectCard
                       title={item.title}
-                      image={process.env.NextBasePath + "/sunset.jpg"}
+                      image={"/sunset.jpg"}
                       description={"by: " + item.author}
                       id={item.id}
                   />

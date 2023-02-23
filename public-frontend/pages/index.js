@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { firestore } from "../services/firebaseService";
 import CustomHtmlViewer from "../components/customHtmlTemplate/customHtmlViewer";
 import { Collapse } from "react-bootstrap";
-import { CurrentTheme } from "../styles/colorSchemes";
 
 export default function Blogpost() {
     const [title, setTitle] = useState("");
@@ -28,16 +27,12 @@ export default function Blogpost() {
     })
 
     return (
-        <Collapse className={styles.container} in={true}>
+        <Collapse className={styles.container} in={title !== ""}>
             <main>
                 <section>
-                    <div className=''>
-                        <div className={"font-montserrat font-bold text-[55px] text-center"}>
-                            <h1 className={styles.title}>
-                                {title}
-                            </h1>
-                        </div>
-                    </div>
+                    <h1 className={styles.title}>
+                        {title}
+                    </h1>
                 </section>
                 <section className='flex mt-3 w-full space-x-4'>
 

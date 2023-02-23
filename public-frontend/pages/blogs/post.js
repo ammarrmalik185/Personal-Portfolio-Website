@@ -38,11 +38,9 @@ export default function Blogpost() {
         <div className={styles.container}>
             <main>
                 <section>
-                    <div>
-                        <h1 className={styles.title}>
-                            {title}
-                        </h1>
-                    </div>
+                    <h1 className={styles.title}>
+                        {title}
+                    </h1>
                 </section>
                 <section className='flex mt-3 w-full space-x-4'>
 

@@ -4,9 +4,9 @@ import List from '@editorjs/list';
 import InlineImage from 'editorjs-inline-image';
 const RawTool = require('@editorjs/raw');
 import Table from '@editorjs/table';
+// import Table from 'editorjs-table';
 const Paragraph = require('editorjs-paragraph-with-alignment');
 import Quote from '@editorjs/quote';
-const LinkTool = require('@editorjs/link');
 const Delimiter = require('@editorjs/delimiter');
 const CodeTool = require('@editorjs/code');
 
@@ -15,17 +15,16 @@ import styles from '../../styles/Home.module.css'
 const editor = new EditorJS({
     holder: 'editorHolder',
     tools: {
-        paragraph: {
-            class: Paragraph,
-            inlineToolbar: true,
+        paragraph: Paragraph,
+        header: Header,
+        delimiter: Delimiter,
+        code: CodeTool,
+        table: {
+            class: Table,
+            inlineToolbar: [],
         },
-        header: {
-            class: Header,
-            config: {
-                placeholder: 'Header'
-            },
-            shortcut: 'CMD+SHIFT+H'
-        },
+        raw: RawTool,
+        list: List,
         image: {
             class: InlineImage,
             inlineToolbar: true,
@@ -39,37 +38,21 @@ const editor = new EditorJS({
                 }
             }
         },
-        table: {
-            class: Table,
-            inlineToolbar: true,
-            config: {
-                rows: 2,
-                cols: 3,
-            },
-        },
-        raw: RawTool,
-        list: {
-            class: List,
-            inlineToolbar: true,
-        },
         quote: {
             class: Quote,
-            inlineToolbar: true,
-            shortcut: 'CMD+SHIFT+O',
             config: {
                 quotePlaceholder: 'Enter a quote',
                 captionPlaceholder: 'Quote\'s author',
             },
         },
-        delimiter: Delimiter,
-        code:CodeTool
+
     },
     data:{
         blocks:[
             {
                 type: "paragraph",
                 data:{
-                    text: "Start Writing your blog"
+                    text: "Start Writing"
                 }
             }
         ]
