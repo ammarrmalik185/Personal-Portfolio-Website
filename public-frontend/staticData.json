@@ -10,7 +10,23 @@
     "measurementId": "G-3WZYEMFQWQ"
   },
   "pathingData": {
-    "baseUrl": "/Personal-Portfolio-Website"
+    "baseUrl": "/Personal-Portfolio-Website",
+    "pageEnum": {
+      "home": 0,
+      "homeEdit": 1,
+      "blogs": 2,
+      "blogEdit": 3,
+      "blogSingle": 4,
+      "projects": 5,
+      "projectEdit": 6,
+      "projectSingle": 7,
+      "portfolios": 8,
+      "portfolioEdit": 9,
+      "portfolioSingle": 10,
+      "login": 11,
+      "signup": 12,
+      "notFound": 13
+    }
   },
   "websiteData": {
     "title": "Ammar's Portfolio",
@@ -33,5 +49,11 @@
       "title": "@ammarrmalik185",
       "url": "https://github.com/ammarrmalik185"
     }
+  },
+  "adminData": {
+    "mainPortfolioId": "ammarRashidMalik",
+    "adminIds": [
+      "Lyc9SMw7dGPhtkbHMw8QADWgmFc2"
+    ]
   }
 }

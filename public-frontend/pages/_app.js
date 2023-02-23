@@ -4,6 +4,7 @@ import Header from "../components/globalComponents/Header";
 import Footer from "../components/globalComponents/Footer";
 import Head from "next/head";
 const staticData = require("../staticData.json")
+import styles from "../styles/Home.module.css"
 
 function MyApp({ Component, pageProps }) {
   return <div>
@@ -13,7 +14,7 @@ function MyApp({ Component, pageProps }) {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Header/>
-    <Component {...pageProps} />
+    <Component className={styles.mainBody} {...pageProps} />
     <Footer/>
   </div>
 }

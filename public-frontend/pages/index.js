@@ -31,13 +31,9 @@ export default function Blogpost() {
         <Collapse className={styles.container} in={true}>
             <main>
                 <section>
-                    <div className=''>
-                        <div className={"font-montserrat font-bold text-[55px] text-center"}>
-                            <h1 className={styles.title}>
-                                {title}
-                            </h1>
-                        </div>
-                    </div>
+                    <h1 className={styles.title}>
+                        {title}
+                    </h1>
                 </section>
                 <section className='flex mt-3 w-full space-x-4'>
 

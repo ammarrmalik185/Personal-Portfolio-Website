@@ -36,11 +36,9 @@ export default function PortfolioSingle() {
         <div className={styles.container}>
             <main>
                 <section>
-                    <div>
-                        <h1 className={styles.title}>
-                            {title}
-                        </h1>
-                    </div>
+                    <h1 className={styles.title}>
+                        {title}
+                    </h1>
                 </section>
                 <section className='flex mt-3 w-full space-x-4'>
 
@@ -148,6 +146,7 @@ export default function PortfolioSingle() {
 
                         </div>
                     </div>
+
                 </section>
             </main>
         </div>
