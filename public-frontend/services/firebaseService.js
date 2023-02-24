@@ -7,7 +7,7 @@ import "firebase/storage";
 try{
     firebase.initializeApp(require("../staticData.json").firebaseConfig);
 }catch (e) {
-    console.error(e)
+    //console.error(e)
 }
 
 // Initialize Cloud Firestore and get a reference to the service

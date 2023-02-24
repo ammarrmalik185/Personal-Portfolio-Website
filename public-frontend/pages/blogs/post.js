@@ -6,6 +6,7 @@ import {VscSearch} from 'react-icons/vsc';
 import {useEffect, useState} from "react";
 import CustomHtmlViewer from "../../components/customHtmlTemplate/customHtmlViewer";
 import BlogCard from "../../components/blogComponents/blogCard";
+import AuthorDetails from "../../components/globalComponents/AuthorDetails";
 
 export default function Blogpost() {
     const [title, setTitle] = useState("");
@@ -69,36 +70,8 @@ export default function Blogpost() {
                             <input type="text" placeholder='Search'/>
                         </div>
 
-                        <div className='px-8 py-8 border rounded-3xl mt-5 shadow-md'>
-                            <p className='font-montserrat font-bold text-center text-[40px] text-[#253D4E] mb-5'>
-                                The Author
-                            </p>
-                            <div className='flex space-x-2'>
-                                <div>
-                                    <Image className='rounded-full' src="sunset.jpg" alt="Sunset in the mountains" width={64}
-                                           height={64}/>
-                                </div>
-                                <div>
-                                    <p className={"font-montserrat font-bold text-[20px] text-[#253D4E]"}>
-                                        {author}
-                                    </p>
-                                    <div className='flex font-sans font-normal text-[12px] text-[#A0ABB8] space-x-2'>
-                                        <p>
-                                            306 posts
-                                        </p>
-                                        <p>
-                                            Since 2012
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='font-sans font-normal text-[18px] text-[#37404E] leading-6'>
-                                <p>Hi there, I am a veteran food blogger sharing my daily all kinds of healthy and fresh
-                                    recipes. I find inspiration in nature, on the streets and almost everywhere.
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet id enim, libero sit.
-                                    Est donec lobortis cursus amet</p>
-                            </div>
-                        </div>
+                        <AuthorDetails userId={"Lyc9SMw7dGPhtkbHMw8QADWgmFc2"}/>
+
                         <div className='px-4 py-4 bg-[#f3fbfb] shadow-md border-blue-300'>
                             <div className=''>
                                 <p className='text-[#1F2938] font-bold font-montserrat text-[22px]'>Catagory</p>

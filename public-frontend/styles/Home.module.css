@@ -180,6 +180,35 @@
   color: var(--text)
 }
 
+/*Author Detail Display*/
+.authorContainer{
+  background-color: var(--primary);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--primary);
+}
+.authorHeader{
+  color: var(--text);
+  font-size: xx-large;
+  text-align: center;
+  font-weight: bold;
+}
+.authorText{
+  color: var(--text);
+  font-weight: bold;
+  margin-bottom: 0;
+}
+.authorSubText{
+  color: var(--textSecondary);
+  font-weight: lighter;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.authorDescription{
+  color: var(--text)
+}
+
 /*Custom Html Styles*/
 .customHtmlHeading{
   color:var(--text)
