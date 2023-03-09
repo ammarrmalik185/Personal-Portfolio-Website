@@ -27,7 +27,7 @@ export function LatestPortfolios(){
                 </p>
             </div>
             <div className='grid grid-cols-3 gap-4'>
-                {portfolios.map(portfolio => <PortfolioCard title={portfolio.title} author={portfolio.user} image={portfolio.image} id={portfolio.id}/>)}
+                {portfolios.map(portfolio  => <PortfolioCard key={portfolio.id} title={portfolio.title} author={portfolio.user} image={portfolio.image} id={portfolio.id}/>)}
             </div>
         </div>}
     </div>);

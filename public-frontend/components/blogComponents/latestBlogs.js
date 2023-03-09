@@ -27,7 +27,7 @@ export function LatestBlogs(){
                 </p>
             </div>
             <div className='grid grid-cols-3 gap-4'>
-                {blogs.map(blog => <BlogCard title={blog.title} author={blog.user} image={blog.image} id={blog.id}/>)}
+                {blogs.map(blog=> <BlogCard key={blog.id} title={blog.title} author={blog.user} image={blog.image} id={blog.id}/>)}
             </div>
         </div>}
     </div>);

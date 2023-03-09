@@ -27,7 +27,7 @@ export function LatestProjects(){
                 </p>
             </div>
             <div className={styles.projectsContainer}>
-                {projects.map(portfolio => <ProjectCard title={portfolio.title} author={portfolio.user} image={portfolio.image} id={portfolio.id}/>)}
+                {projects.map(portfolio => <ProjectCard key={portfolio.id} title={portfolio.title} author={portfolio.user} image={portfolio.image} id={portfolio.id}/>)}
             </div>
         </div>}
     </div>);
