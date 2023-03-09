@@ -42,12 +42,15 @@ export default function Home() {
             <div className={styles.projectsContainer}>
               {projects.sort().map((item) => {
                 return(
-                  <ProjectCard
-                      title={item.title}
-                      image={item.image}
-                      author={item.user}
-                      id={item.id}
-                  />
+                    <div key={item.id}>
+                      <ProjectCard
+                          key={item.id}
+                          title={item.title}
+                          image={item.image}
+                          author={item.user}
+                          id={item.id}
+                      />
+                    </div>
                 )
               })}
             </div>
