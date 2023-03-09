@@ -10,6 +10,8 @@ export default function Editor(){
     const router = useRouter();
 
     const [init, setInit] = useState(false)
+    const [data, setData] = useState({blocks: null});
+
     useEffect(() => {
         if(init) return;
         auth.onAuthStateChanged(user => {
@@ -19,6 +21,13 @@ export default function Editor(){
                 }).then(console.log).catch(console.error)
             }
         })
+        firestore.collection("portfolios").doc(staticData.adminData.mainPortfolioId).get().then((snapShot) => {
+            if(snapShot.exists){
+                setData(snapShot.data().content);
+            }else{
+                setData({blocks: []});
+            }
+        })
         setInit(true);
     })
 
@@ -26,13 +35,16 @@ export default function Editor(){
         <div className={styles.editorPage} >
             <h1 className={styles.title}>Edit Your Portfolio</h1>
             <ContentEditor
-            prompts={
-                {title: "Portfolio Title", saveButton: "Save"}
-            } onSave={(uploadData) => {
-                uploadData = addDefaultData(uploadData);
-                firestore.collection("portfolios").doc("ammarRashidMalik").set(uploadData).then(() => {
-                    router.push("/Personal-Portfolio-Website").then(console.log).catch(console.error)
-                })
+                isUpdate = {false}
+                updateData = {data}
+                prompts={
+                    {title: "Portfolio", saveButton: "Save"}
+                }
+                onSave={(uploadData) => {
+                    uploadData = addDefaultData(uploadData);
+                    firestore.collection("portfolios").doc(staticData.adminData.mainPortfolioId).set(uploadData).then(() => {
+                        router.push(staticData.pathingData.baseUrl).then(console.log).catch(console.error)
+                    })
             }}/>
         </div>
     )

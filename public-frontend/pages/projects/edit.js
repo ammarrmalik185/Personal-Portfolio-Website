@@ -23,7 +23,7 @@ export default function Editor(){
     return(
         <div className={styles.editorPage} >
             <h1 className={styles.title}>Publish your Project</h1>
-            <ContentEditor prompts={{title: "Project Title", saveButton:"Save"}} onSave={(uploadData) => {
+            <ContentEditor prompts={{title: "Project", saveButton:"Save"}} onSave={(uploadData) => {
                 uploadData = addDefaultData(uploadData);
                 firestore.collection("projects").add(uploadData).then((savedData) => {
                     router.push({

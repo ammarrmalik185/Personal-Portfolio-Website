@@ -22,7 +22,7 @@ export default function PortfolioEditor(){
      return(
         <div className={styles.editorPage} >
             <h1 className={styles.title}>Create Your Portfolio</h1>
-            <ContentEditor prompts={{title: "Portfolio Title", saveButton:"Save"}} onSave={(uploadData) => {
+            <ContentEditor prompts={{title: "Portfolio", saveButton:"Save"}} onSave={(uploadData) => {
                 uploadData = addDefaultData(uploadData);
                 firestore.collection("portfolios").doc(auth.currentUser.uid).set(uploadData).then(() => {
                     router.push({

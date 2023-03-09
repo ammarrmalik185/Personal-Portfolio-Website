@@ -56,7 +56,8 @@
 .dialogContent{
   margin: 20% auto;
   text-align: center;
-  background-color: #ffffff;
+  background-color: var(--primary);
+  padding-bottom: 20px;
   height: fit-content;
   min-height: 400px;
   width: 80%;
@@ -205,8 +206,22 @@
   flex-direction: row;
   justify-content: space-evenly;
 }
+.cardSubText{
+  color: var(--textSecondary);
+  font-weight: lighter;
+}
 .authorDescription{
   color: var(--text)
+}
+.cardButton{
+  padding: 10px;
+  background-color: var(--secondary);
+  display: inline;
+  border-radius: 5px;
+  color: var(--text);
+}
+.cardButton:hover{
+  cursor: pointer;
 }
 
 /*Custom Html Styles*/
@@ -300,6 +315,38 @@
 .customHtmlUnorderedListItem :last-child {
     border-bottom: none;
 }
+
+/*Project Card*/
+.projectsContainer{
+  display: flex;
+  width: 100%;
+}
+.projectCard{
+  background-color: var(--primary);
+  width: 100%;
+  padding: 10px 10px 30px;
+  display: flex;
+  height: 150px;
+  align-content: center;
+  flex: 1;
+  border-radius: 10px;
+  margin-top: 20px;
+  justify-content: start;
+}
+.projectCardImage{
+  height: 100%
+}
+.projectCardContent{
+  padding-top: 20px;
+  padding-left: 10px;
+}
+.projectCardButton{
+  display: flex;
+  margin-left: auto;
+  margin-right: 20px;
+  align-items: center;
+}
+
 
 /*Media Queries*/
 @media (max-width: 600px) {

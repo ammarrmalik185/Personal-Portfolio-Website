@@ -3,6 +3,7 @@ import { firestore } from "../../services/firebaseService";
 import ProjectCard from '../../components/projectComponents/projectCard'
 import styles from '../../styles/Home.module.css'
 import { useEffect, useState } from "react";
+import {Collapse} from "react-bootstrap";
 
 export default function Home() {
   const [projects, setProjects] = useState([]);
@@ -37,20 +38,20 @@ export default function Home() {
              <span className="inline-block bg-[#f3fbfb] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">Contributors</span>
         </div>
 
-        <div className="grid grid-cols-3 gap-3">
-          {projects.sort().map((item) => {
-            return(
-                <div className='mt-5' key={item.id}>
+          <Collapse className={styles.container} in={projects.length !== 0}>
+            <div className={styles.projectsContainer}>
+              {projects.sort().map((item) => {
+                return(
                   <ProjectCard
                       title={item.title}
-                      image={"/sunset.jpg"}
-                      description={"by: " + item.author}
+                      image={item.image}
+                      author={item.user}
                       id={item.id}
                   />
-                </div>
-            )
-          })}
-        </div>
+                )
+              })}
+            </div>
+          </Collapse>
 
           <div className="flex justify-center mt-8">
               <div className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-3 mb-2">1</div>

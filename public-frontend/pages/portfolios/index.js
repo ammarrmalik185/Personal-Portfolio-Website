@@ -2,6 +2,7 @@ import { firestore } from "../../services/firebaseService";
 import PortfolioCard from '../../components/portfolioComponents/portfolioCard'
 import styles from '../../styles/Home.module.css'
 import { useEffect, useState } from "react";
+import {Collapse} from "react-bootstrap";
 
 export default function Portfolios() {
   const [portfolios, setPortfolios] = useState([]);
@@ -29,20 +30,22 @@ export default function Portfolios() {
           Browse profiles of people
         </h2>
 
-        <div className="grid grid-cols-3 gap-3">
-          {portfolios.sort().map((item) => {
-            return(
-                <div className='mt-5' key={item.id}>
-                  <PortfolioCard
-                      title={item.title}
-                      image={process.env.NextBasePath + "/sunset.jpg"}
-                      description={"by: " + item.author}
-                      id={item.id}
-                  />
-                </div>
-            )
-          })}
-        </div>
+        <Collapse className={styles.container} in={portfolios.length !== 0}>
+          <div className="grid grid-cols-3 gap-3">
+            {portfolios.sort().map((item) => {
+              return(
+                  <div className='mt-5' key={item.id}>
+                    <PortfolioCard
+                        title={item.title}
+                        image={item.image}
+                        author={item.user}
+                        id={item.id}
+                    />
+                  </div>
+              )
+            })}
+          </div>
+        </Collapse>
 
         {/* page number slider  */}
 

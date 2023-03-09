@@ -1,40 +1,50 @@
-import Image from "next/image";
 import {RiFlag2Line} from "react-icons/ri";
 import {useRouter} from "next/router";
-import {CurrentTheme} from "../../styles/colorSchemes";
+import styles from '../../styles/Home.module.css'
+import {useEffect, useState} from "react";
+import {firestore} from "../../services/firebaseService";
+import staticData from "../../staticData.json";
 
-
-function ProjectCard ({ title, description, image, id, onClick }) {
+function ProjectCard ({ title, author, image, id }) {
     const Router = useRouter();
+    const [authorName, setAuthorName] = useState("");
+    const [init, setInit] = useState(false);
+    useEffect(() => {
+        if(init) return;
+
+        firestore.collection("users").doc(author).get().then(snapshot => {
+            if(snapshot.exists) {
+                setAuthorName(snapshot.data().displayName)
+            }
+        })
+
+        setInit(true);
+    })
     return (
-        <div className="max-w-sm rounded shadow-lg" style={{backgroundColor: CurrentTheme.contrast}}>
+        <div className={styles.projectCard}>
             <div className="rounded-lg px-6 pt-4" >
-                <Image className="rounded-lg" src={image} alt="Sunset in the mountains"  height="150" width="300"/></div>
-            <div className="px-6 pt-2">
-                <div className="font-bold text-xl">
-                    <text className="line-clamp-2">
+                <img className={styles.projectCardImage} src={image || staticData.defaults.blogPicture} alt="Sunset in the mountains"/></div>
+            <div className={styles.projectCardContent}>
+                <div>
+                    <text className={styles.authorHeader}>
                         {title}
                     </text>
                 </div>
-                <p style={{color:CurrentTheme.text}}>
-                    {description}
+                <p className={styles.cardSubText}>
+                    {"By: " + authorName}
                 </p>
             </div>
 
-            <div className="px-6 pt-4 pb-2 flex space-between">
-            <div className="rounded-md flex-grow">
-            <div className="w-fit rounded cursor-pointer mb-3" style={{backgroundColor: CurrentTheme.secondary}} onClick={() => Router.push({
-                    pathname: "/projects/post",
-                    query:{id: id}
-                })}>
-                <span className="inline-block text-sm font-semibold text-gray-700 p-2" style={{color: CurrentTheme.text}}> Keep Reading </span>
-            </div>
+            <div className={styles.projectCardButton}>
+                <div className="rounded-md flex-grow">
+                    <div className={styles.cardButton} onClick={() => Router.push({
+                        pathname: "/projects/post",
+                        query:{id: id}
+                    })}>
+                        <span> Keep Reading </span>
+                    </div>
 
-            </div>
-            <div className="items-center">
-                <RiFlag2Line className="text-gray-700 text-lg" />
-            </div>
-
+                </div>
             </div>
         </div>
     )

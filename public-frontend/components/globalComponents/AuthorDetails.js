@@ -2,6 +2,7 @@ import Image from "next/image";
 import {useEffect, useState} from "react";
 import {firestore} from "../../services/firebaseService";
 import styles from "../../styles/Home.module.css"
+const staticData = require("../../staticData.json")
 
 export default function AuthorDetails({userId}){
     const [name, setName] = useState("");
@@ -37,8 +38,9 @@ export default function AuthorDetails({userId}){
             <hr/>
             <div className='flex space-x-2'>
                 <div>
-                    <Image className='rounded-full' src={profilePicture} alt="Sunset in the mountains" width={64}
-                           height={64}/>
+                    <img className='rounded-full' src={profilePicture || staticData.defaults.profilePicture} title={name}  alt="image" width={64} height={64}/>
+                    {/*<Image className='rounded-full' src={profilePicture} alt="Sunset in the mountains" width={64}*/}
+                    {/*       height={64}/>*/}
                 </div>
                 <div>
                     <p className={styles.authorText}>

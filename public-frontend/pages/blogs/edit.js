@@ -23,7 +23,7 @@ export default function Editor(){
         <div className={styles.editorPage} >
             <h1 className={styles.title}>Create Your Blog</h1>
             <ContentEditor
-                prompts={{title:"Blog Title", saveButton:"Post"}}
+                prompts={{title:"Blog", saveButton:"Post"}}
                 onSave={(uploadData) => {
                     uploadData = addDefaultData(uploadData);
                     firestore.collection("blogs").add(uploadData).then(savedData => {
