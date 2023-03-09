@@ -12,58 +12,70 @@ const CodeTool = require('@editorjs/code');
 
 import styles from '../../styles/Home.module.css'
 
-const editor = new EditorJS({
-    holder: 'editorHolder',
-    tools: {
-        paragraph: Paragraph,
-        header: Header,
-        delimiter: Delimiter,
-        code: CodeTool,
-        table: {
-            class: Table,
-            inlineToolbar: [],
-        },
-        raw: RawTool,
-        list: List,
-        image: {
-            class: InlineImage,
-            inlineToolbar: true,
-            config: {
-                embed: {
-                    display: true,
-                },
-                unsplash:{
-                    appName: 'Portfolio Website',
-                    clientId: 'za5eB4XR4uyOZDGTF3CD1Kcp8xlC96gKFs4tBo1BoXY'
-                }
-            }
-        },
-        quote: {
-            class: Quote,
-            config: {
-                quotePlaceholder: 'Enter a quote',
-                captionPlaceholder: 'Quote\'s author',
+let editor;
+let init = false;
+function InitEditor(blocks){
+    if(init) return;
+    editor =  new EditorJS({
+        holder: 'editorHolder',
+        tools: {
+            paragraph: Paragraph,
+            header: Header,
+            delimiter: Delimiter,
+            code: CodeTool,
+            table: {
+                class: Table,
+                inlineToolbar: [],
             },
-        },
+            raw: RawTool,
+            list: List,
+            image: {
+                class: InlineImage,
+                inlineToolbar: true,
+                config: {
+                    embed: {
+                        display: true,
+                    },
+                    unsplash:{
+                        appName: 'Portfolio Website',
+                        clientId: 'za5eB4XR4uyOZDGTF3CD1Kcp8xlC96gKFs4tBo1BoXY'
+                    }
+                }
+            },
+            quote: {
+                class: Quote,
+                config: {
+                    quotePlaceholder: 'Enter a quote',
+                    captionPlaceholder: 'Quote\'s author',
+                },
+            },
 
-    },
-    data:{
-        blocks:[
+        },
+        data:{
+            blocks: blocks
+        }
+    });
+    init = true;
+}
+
+export default function CustomHtmlEditor({ data , onEditor, isUpdate }) {
+    if(isUpdate){
+        if(data.blocks){
+            console.log(data.blocks)
+            InitEditor(data.blocks);
+            onEditor(editor);
+        }
+    }else{
+        InitEditor([
             {
                 type: "paragraph",
                 data:{
                     text: "Start Writing"
                 }
             }
-        ]
+        ])
+        onEditor(editor);
     }
-});
-
-export default function CustomHtmlEditor({ data , onEditor }) {
-    if(data !== undefined){
-        editor.blocks = data;
-    }
-    onEditor(editor);
     return(
         <div className={styles.editorHolder}>
             <div id='editorHolder' className='bg-gray'/>

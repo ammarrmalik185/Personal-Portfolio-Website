@@ -6,10 +6,14 @@ import {BlueButton, GreenButton} from "../basicComponents/CustomButtons";
 import dynamic from "next/dynamic";
 const CustomHtmlEditor = dynamic(() => import('../customHtmlTemplate/customHtmlEditor'), { ssr: false })
 
-export default function ContentEditor({ prompts, onSave}){
+export default function ContentEditor({ prompts, onSave, isUpdate, updateData }){
     const[data, setData] = useState([]);
     const[title, setTitle] = useState("")
     const[tags, setTags] = useState("")
+
+    if(isUpdate){
+        setData(updateData)
+    }
     let editor = null;
     return(
         <div className={styles.editorPage} >
@@ -18,15 +22,16 @@ export default function ContentEditor({ prompts, onSave}){
                 <div className="flex justify-center">
                     <div className="mb-3 xl:w-96 mr-3">
                         <label htmlFor="title" className={styles.formLabel}>{prompts.title}</label>
-                        <InputField type="text" id="title" placeholder={"Enter " + prompts.title} value={title} onChange={setTitle}/>
+                        <InputField type="text" id="title" placeholder={"Enter " + prompts.title + " Title"} value={title} onChange={setTitle}/>
                     </div>
                     <div className="mb-3 xl:w-96 mr-3">
                         <label htmlFor="title" className={styles.formLabel}>Tags</label>
-                        <InputField type="text" id="tags" placeholder="Enter Blog Tags" value={tags} onChange={setTags}/>
+                        <InputField type="text" id="tags" placeholder={"Enter " + prompts.title + " Tags"} value={tags} onChange={setTags}/>
                     </div>
                 </div>
             </div>
             <CustomHtmlEditor
+                isUpdate = {isUpdate}
                 data={data}
                 onEditor={e => editor = e}
             />
@@ -45,7 +50,7 @@ export default function ContentEditor({ prompts, onSave}){
             <div className='flex flex-1 justify-center space-x-2 pb-10'>
                 <GreenButton title={prompts.saveButton} onClick={() => {
                     editor.save().then(data => {
-                        setData(data)
+                        setData({...data, blocks: clarifyContent(data.blocks)})
                         let dataFormatted = {
                             title: document.getElementById('title').value,
                             tags: document.getElementById('tags').value,
@@ -58,7 +63,7 @@ export default function ContentEditor({ prompts, onSave}){
                 }}/>
                 <BlueButton title="Show Preview" onClick={() => {
                     editor.save().then(data => {
-                        setData(data)
+                        setData({...data, blocks: clarifyContent(data.blocks)})
                     })
                     document.getElementById('dialog').style['display'] = 'block';
                 }} />
@@ -70,6 +75,7 @@ export default function ContentEditor({ prompts, onSave}){
 
 function clarifyContent(blocks) {
 
+    console.log("Blocks:" + blocks)
     return blocks.map(block => {
         switch (block.type) {
             case "header":
@@ -99,5 +105,7 @@ function clarifyContent(blocks) {
                 console.log("Unknown block type", block.type);
                 break;
         }
+
     });
+
 }

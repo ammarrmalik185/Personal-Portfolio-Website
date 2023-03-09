@@ -1,4 +1,4 @@
-/*Themes*/
+/* Themes */
 :root {
   --primary: rgba(33,37,41, 1);
   --secondary: #383d40;
@@ -24,6 +24,8 @@
 /*  --success: #0b460c;*/
 /*  --alert: #641212;*/
 /*}*/
+
+/*Tailwind Stuff*/
 
 @tailwind base;
 @tailwind components;
@@ -63,13 +65,21 @@ body {
   box-sizing: border-box;
 }
 
+/* Templating */
+
+
+
 .ce-block--selected .ce-block__content{
   background-color: var(--primary) !important;
 }
 
+/* Paragraph  */
+
 .ce-paragraph{
   color:var(--text)
 }
+
+/* Table */
 
 .tc-cell{
   color:var(--text);
@@ -107,4 +117,36 @@ body {
   color: var(--text) !important;
 }
 
+/* Unsplash */
+.inline-image__image-gallery{
+  background-color: var(--secondary) !important;
+}
 
+.inline-image__image-credits a{
+  color: var(--textSecondary) !important;
+}
+
+.inline-image__image-credits{
+  color: var(--text) !important;
+}
+
+.inline-image__tab{
+  color: var(--text) !important;
+}
+.inline-image__tab:hover{
+  background-color: var(--primary) !important;
+}
+
+.inline-image__search{
+  color: var(--text) !important;
+}
+
+/*Quote*/
+.cdx-input{
+  color: var(--text) !important;
+}
+
+/* Lists */
+.cdx-list{
+  color: var(--text) !important;
+}

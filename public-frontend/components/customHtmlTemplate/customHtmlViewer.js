@@ -5,7 +5,7 @@ export default function CustomHtmlViewer({ contentBlocks }) {
 
     return (
         <div>
-            <section className='block'>
+            <section>
                 <div id="contentDisplay" className={"space-y-4"}>{Parser(convertDataToHtml(contentBlocks))}</div>
             </section>
         </div>
@@ -55,7 +55,7 @@ function convertDataToHtml(blocks) {
                 break;
             case "table":
                 convertedHtml += `<table className=${styles.customHtmlTable}>`
-                let headerAdd = true;
+                let headerAdd = block.data.withHeadings;
                 block.data.content.forEach(col => {
                     if(headerAdd){
                         convertedHtml += `<thead className=${styles.customHtmlTableHeader}>`

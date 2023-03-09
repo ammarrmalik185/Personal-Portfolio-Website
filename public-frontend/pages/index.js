@@ -14,9 +14,7 @@ export default function Blogpost() {
                 if (snapshot.exists) {
                     let data = snapshot.data();
                     setTitle(data.title);
-                    setContent(data.content);
-                    console.log("Document data:", data);
-
+                    setContent(data.content)
                 } else {
                     console.log("No such document!");
                 }
