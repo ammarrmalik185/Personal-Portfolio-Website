@@ -50,11 +50,11 @@ export default function ContentEditor({ prompts, onSave, isUpdate, updateData })
             <div className='flex flex-1 justify-center space-x-2 pb-10'>
                 <GreenButton title={prompts.saveButton} onClick={() => {
                     editor.save().then(data => {
-                        setData({...data, blocks: clarifyContent(data.blocks)})
+                        let clarifiedData = clarifyContent(data.blocks);
                         let dataFormatted = {
                             title: document.getElementById('title').value,
                             tags: document.getElementById('tags').value,
-                            content: {...data, blocks: clarifyContent(data.blocks)}
+                            content: {...data, blocks: clarifiedData}
                         }
                         console.log(dataFormatted)
                         onSave(dataFormatted);
@@ -64,8 +64,8 @@ export default function ContentEditor({ prompts, onSave, isUpdate, updateData })
                 <BlueButton title="Show Preview" onClick={() => {
                     editor.save().then(data => {
                         setData({...data, blocks: clarifyContent(data.blocks)})
+                        document.getElementById('dialog').style['display'] = 'block';
                     })
-                    document.getElementById('dialog').style['display'] = 'block';
                 }} />
             </div>
 

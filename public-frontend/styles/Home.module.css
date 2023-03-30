@@ -56,7 +56,7 @@
 .dialogContent{
   margin: 20% auto;
   text-align: center;
-  background-color: var(--primary);
+  background-color: var(--secondary);
   padding-bottom: 20px;
   height: fit-content;
   min-height: 400px;
@@ -248,22 +248,24 @@
   border-collapse: collapse;
   width: 100%;
   margin: 20px 0;
-  background-color: var(--secondary);
+  background-color: var(--primary);
   color: var(--text);
-  border: 1px solid var(--primary)
+  border: 1px solid var(--secondary)
 }
 .customHtmlTableHeader, .customHtmlTableData {
   text-align: left;
   padding: 8px;
-  border-bottom: 1px solid var(--primary);
-  border-right: 1px solid var(--primary);
+  border-bottom: 1px solid var(--secondary);
+  border-right: 1px solid var(--secondary);
 }
 .customHtmlTableRow :hover {
   background-color: #555;
 }
 .customHtmlTableHeader {
   background-color: var(--primary);
-  color: var(--text);
+  color: var(--textSecondary);
+  font-size: large;
+  font-weight: bold;
   border-right: 1px solid var(--primary);
 }
 .customHtmlBlockquote {
