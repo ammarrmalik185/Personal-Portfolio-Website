@@ -1,20 +1,27 @@
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import styles from "../../styles/Home.module.css";
-import {auth} from "../../services/firebaseService"
-import {useRouter} from "next/router";
-import {useState} from "react";
-import {detectPage} from "../../services/pageDetector";
+import { auth } from "../../services/firebaseService"
+import { useRouter } from "next/router";
+import { detectPage } from "../../services/pageDetector";
+import { useAuthState } from 'react-firebase-hooks/auth';
 const staticData = require("../../staticData.json")
+import firebase from "firebase";
+
 export default function Header() {
     const router = useRouter();
-    const [isLogged, setIsLogged] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false);
+    console.log(firebase.auth());
+    const [user, loading, error] = useAuthState(firebase.auth());
     const currentPage = detectPage(router.pathname);
+    let isLogged = false;
+    let isAdmin = false;
 
-    auth.onAuthStateChanged(user => {
-        setIsLogged(user != null)
-        setIsAdmin(user != null && staticData.adminData.adminIds.includes(user.uid))
-    })
+    if (loading || error || !user) {
+        isLogged = false;
+    }else{
+        isLogged = true;
+        isAdmin = staticData.adminData.adminIds.includes(user.uid)
+    }
+
     return (
         <Navbar className={styles.header} expand="lg">
             <Container>
