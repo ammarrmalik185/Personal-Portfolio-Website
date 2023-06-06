@@ -1,12 +1,13 @@
 import styles from '../../styles/Home.module.css'
 import Parser from 'html-react-parser';
+const { ViewerConfig } = require('./customHTMLConfig');
 
 export default function CustomHtmlViewer({ contentBlocks }) {
-
     return (
         <div>
             <section>
-                <div id="contentDisplay" className={"space-y-4"}>{Parser(convertDataToHtml(contentBlocks))}</div>
+                { contentBlocks.map(block => ViewerConfig.AutoRenderer(block)) }
+                {/*<div id="contentDisplay" className={"space-y-4"}>{Parser(convertDataToHtml(contentBlocks))}</div>*/}
             </section>
         </div>
     )
@@ -15,6 +16,7 @@ export default function CustomHtmlViewer({ contentBlocks }) {
 function convertDataToHtml(blocks) {
     let convertedHtml = "";
     blocks.map(block => {
+        console.log(block.type)
         switch (block.type) {
             case "header":
                 convertedHtml += `<h${block.data.level} className=${styles.customHtmlHeading} style="margin: 10px">${block.data.text}</h${block.data.level}>`;
@@ -81,6 +83,14 @@ function convertDataToHtml(blocks) {
                 console.log("Unknown block type", block.type);
                 break;
         }
+        console.log(convertedHtml)
     });
     return convertedHtml;
+}
+
+function GetBlock(block) {
+    switch (block.type) {
+        case "header":
+            return ViewerConfig[block.type](block.data);
+    }
 }

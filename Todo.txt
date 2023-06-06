@@ -1,2 +1,9 @@
+Bug Fixes:
+    TODO: Image Alignment on Blog Grid
+    TODO: Text Limit on Blog Grid
 
+Feature Improvements:
+    TODO: Add save image to storage option in image
 
+New Features:
+    TODO: Add option to add title image to blogs
