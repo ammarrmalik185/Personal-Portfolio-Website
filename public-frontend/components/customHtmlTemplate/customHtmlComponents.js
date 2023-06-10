@@ -55,7 +55,7 @@ export const CustomHtmlList = ({block}) => {
         return (
             <ul className={styles.customHtmlUnorderedList}>
                 {
-                    block.data.items.map(li => <li className={styles.customHtmlUnorderedListItem}>{li}</li>)
+                    block.data.items.map((li, i) => <li key={i} className={styles.customHtmlUnorderedListItem}>{li}</li>)
                 }
             </ul>
         );
@@ -64,7 +64,7 @@ export const CustomHtmlList = ({block}) => {
         return (
             <ol className={styles.customHtmlUnorderedList}>
                 {
-                    block.data.items.map((li, i) => <li className={styles.customHtmlUnorderedListItem}>{i+1 + ": " + li}</li>)
+                    block.data.items.map((li, i) => <li key={i} className={styles.customHtmlUnorderedListItem}>{i+1 + ": " + li}</li>)
                 }
             </ol>
         );
@@ -73,7 +73,7 @@ export const CustomHtmlList = ({block}) => {
 
 export const CustomHtmlImage = ({block}) => {
     return (
-        <div>   
+        <div>
             <div style={{display: "flex", justifyContent: "center"}}>
                 <img className={styles.customHtmlImage} src={block.data.url} title={block.data.caption}  alt="image"/>
             </div>
@@ -105,7 +105,7 @@ export const CustomHtmlTable = ({block}) => {
                         return (
                             <thead className={styles.customHtmlTableHeader}>
                                 {
-                                    col.row.map(row => <th className={styles.customHtmlTableHeader}>{row}</th>)
+                                    col.row.map((row,i) => <th key={i} className={styles.customHtmlTableHeader}>{row}</th>)
                                 }
                             </thead>
                         )
@@ -113,7 +113,7 @@ export const CustomHtmlTable = ({block}) => {
                         return (
                             <tr className={styles.customHtmlTableRow}>
                                 {
-                                    col.row.map(row => <td className={styles.customHtmlTableData}>{row}</td>)
+                                    col.row.map((row, i) => <td key={i} className={styles.customHtmlTableData}>{row}</td>)
                                 }
                             </tr>
                         )
