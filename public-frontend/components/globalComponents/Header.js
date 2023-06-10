@@ -45,7 +45,7 @@ export default function Header() {
                 </Navbar.Collapse>
                 <Navbar.Text className={styles.headerText}>
                     {isLogged && <a className={styles.headerText} onClick={() => auth.signOut()}>Signout</a>}
-                    {!isLogged && <a className={styles.headerText} href={staticData.pathingData.baseUrl + "/login"}>Login</a>}
+                    {!isLogged && <a className={styles.headerText} href={staticData.pathingData.baseUrl + "/user/login"}>Login</a>}
                 </Navbar.Text>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
             </Container>

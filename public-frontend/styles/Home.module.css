@@ -98,6 +98,21 @@
 .formInput ::placeholder{
   color: var(--textSecondary)
 }
+.formImageInput{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 20px;
+  color: var(--text);
+  font-size: medium;
+  border-radius: 7px;
+  background-color: var(--primary);
+}
+
+.formImageInput img:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
 
 /*Heading Styles*/
 .header{

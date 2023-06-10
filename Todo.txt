@@ -1,9 +1,15 @@
-Bug Fixes:
-    TODO: Image Alignment on Blog Grid
-    TODO: Text Limit on Blog Grid
+TODO: Bug Fixes:
+|--> TODO: Image Alignment on Blog Grid
+|--> TODO: Text Limit on Blog Grid
+|--> TODO: Responsive Design on Blog Grid
+|--> TODO: Responsive Design on Projects List
+L--> TODO: Responsive Design on Portfolio List
 
-Feature Improvements:
-    TODO: Add save image to storage option in image
+TODO: Feature Improvements:
+|--> TODO: Use material UI for website design and let the user change design in staticData.json
+L--> TODO: Add save image to storage option in image
 
-New Features:
-    TODO: Add option to add title image to blogs
+
+TODO: New Features:
+|-->TODO: Add option to add title image to blogs
+L-->TODO: Add option to customize profile
